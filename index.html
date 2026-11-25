@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>晚安电器 WN-89</title>
+<meta name="description" content="晚安电器 WN-89 家庭守夜机。它整夜醒着，所以你可以安心入睡。">
+<style>
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@600;900&family=ZCOOL+QingKe+HuangYou&family=VT323&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 全屏效果层：随滚动加深 -->
+<canvas id="fx-noise" class="fx" width="160" height="100" aria-hidden="true"></canvas>
+<div id="fx-scan" class="fx" aria-hidden="true"></div>
+<div id="fx-vig" class="fx" aria-hidden="true"></div>
+<div id="fx-track" class="fx" aria-hidden="true"></div>
+<div id="vhs-hud" aria-hidden="true"><span>&#9654; PLAY</span><span id="hud-tc">SP 0:00:00</span></div>
+<div id="sub" aria-hidden="true"><canvas id="sub-c" width="200" height="150"></canvas></div>
+
+<header id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="晚安电器 首页">
+      <svg class="logo-moon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#e2a03a"/><circle cx="22" cy="11" r="11" fill="currentColor" class="moon-cut"/></svg>
+      <span class="logo-cn" id="logo-cn">晚安电器</span>
+      <span class="logo-en">GOODNIGHT ELECTRIC</span>
+    </a>
+    <nav id="nav-links" aria-label="主导航">
+      <a href="#features">产品</a><a href="#tech">技术</a><a href="#stories">用户故事</a><a href="#pricing">价格</a><a href="#faq">常见问题</a>
+    </nav>
+    <div class="nav-right">
+      <button id="sound-btn" class="bevel" type="button" aria-pressed="false">声音 关</button>
+      <span id="cart">购物车 (0)</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="top" class="s-hero" data-c="0">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="lcd-chip">SINCE 1989</span> WN-89 家庭守夜机 · 第三代</p>
+      <h1 id="hero-title">它整夜醒着，<br>所以你可以安心入睡。</h1>
+      <p class="lede" id="hero-lede">晚安 WN-89 搭载夜视显像管、声纹记忆芯片和永续电源。把它放在卧室门口，黑暗就交给它看着。</p>
+      <div class="cta-row">
+        <button class="btn btn-buy" type="button" data-order="basic">立即订购 ¥1,989</button>
+        <button class="btn btn-ghost" type="button" id="jingle-btn">&#9654; 播放广告歌</button>
+      </div>
+      <p class="trust" id="trust">★★★★★ 4.9 分 · 已陪伴 <span id="fam">1,204,388</span> 个家庭度过夜晚</p>
+    </div>
+    <figure class="device" aria-label="晚安 WN-89 家庭守夜机">
+      <div class="dev-antenna"></div>
+      <div class="dev-body">
+        <div class="dev-crt"><canvas id="dev-screen" width="48" height="36"></canvas></div>
+        <div class="dev-side">
+          <div class="dev-lcd"><svg id="dev-clock" viewBox="0 0 118 44" role="img" aria-label="时钟"></svg></div>
+          <div class="dev-knobs"><span class="dev-knob" id="knob-a"></span><span class="dev-knob" id="knob-b"></span></div>
+          <div class="dev-grille"></div>
+        </div>
+        <div class="dev-plate"><span class="dev-led"></span><span id="dev-name">晚安 WN-89</span></div>
+      </div>
+      <div class="dev-feet"><span></span><span></span></div>
+      <figcaption class="dev-cap">MODEL WN-89 · 220V~ 50Hz · 9W · 3.2kg</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="band" aria-label="促销信息">
+  <div class="stripes"></div>
+  <div class="marquee"><div class="mq-track" id="mq"></div></div>
+</div>
+
+<section id="features" class="sec s-feat" data-c="0.04">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">P.02</span><h2>四项为夜晚设计的技术</h2></div>
+    <p class="sec-lede">从显像管到电源，每一个部件都为了同一件事：让家里的每个人一觉睡到天亮。</p>
+    <div class="feat-grid">
+      <article class="card">
+        <canvas class="picon" data-icon="eye" width="12" height="12"></canvas>
+        <h3>夜视显像管</h3><p class="card-en">NIGHT VISION TUBE</p>
+        <p id="f1">红外照明加 625 线黑白显像管，在完全无光的房间里也能看清 12 米内的动静。</p>
+      </article>
+      <article class="card">
+        <canvas class="picon" data-icon="wave" width="12" height="12"></canvas>
+        <h3>声纹记忆</h3><p class="card-en">VOICE MEMORY</p>
+        <p id="f2">记住每位家人的声音。孩子半夜做噩梦时，它会用妈妈的声音轻声安慰。</p>
+      </article>
+      <article class="card">
+        <canvas class="picon" data-icon="batt" width="12" height="12"></canvas>
+        <h3>永续电源</h3><p class="card-en">PERPETUAL POWER</p>
+        <p id="f3">停电不停机。内置蓄电池可以独立工作 72 小时，守护不会中断。</p>
+      </article>
+      <article class="card">
+        <canvas class="picon" data-icon="moon" width="12" height="12"></canvas>
+        <h3>安静陪伴</h3><p class="card-en">SILENT MODE</p>
+        <p id="f4">工作噪声低于 18 分贝，比翻书的声音还轻。你几乎察觉不到它的存在。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tech" class="sec s-tech" data-c="0.1">
+  <div class="wrap tech-grid">
+    <div>
+      <div class="sec-head"><span class="sec-no">P.03</span><h2>技术规格</h2></div>
+      <table class="spec">
+        <tbody>
+          <tr><th scope="row">型号</th><td>WN-89</td></tr>
+          <tr><th scope="row">显像管</th><td>5 英寸黑白，625 线</td></tr>
+          <tr><th scope="row">夜视距离</th><td>12 米（红外 850 纳米）</td></tr>
+          <tr><th scope="row">连续工作</th><td id="sp-hours">24 小时 / 天</td></tr>
+          <tr><th scope="row">额定功率</th><td>9 瓦（220 伏，50 赫兹）</td></tr>
+          <tr><th scope="row">整机重量</th><td>3.2 千克 *</td></tr>
+          <tr><th scope="row">记忆容量</th><td id="sp-mem">4 位家庭成员（可自动扩充）</td></tr>
+          <tr><th scope="row">保修</th><td>终身</td></tr>
+        </tbody>
+      </table>
+      <p class="foot">* 夜间实测重量可能略有不同。<span class="hid">救救我们</span></p>
+    </div>
+    <div>
+      <h3 class="steps-h">三步开始使用</h3>
+      <ol class="steps">
+        <li id="st1">把守夜机放在卧室门口，屏幕朝向走廊。</li>
+        <li id="st2">对着它清楚地说出每位家人的名字。</li>
+        <li id="st3">关灯，睡觉。夜里请不要起床查看它。</li>
+      </ol>
+      <div class="tech-note"><span class="lcd-chip">TIP</span> 第一周守夜机会学习你家的作息，<span id="tip-tail">偶尔在夜里发出轻微的声响属于正常现象。</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="sec s-demo" data-c="0.18">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">P.04</span><h2>实时守护画面</h2></div>
+    <p class="sec-lede">下面是一位用户提供的夜间录像。守夜机会标记画面里的每一次移动，第二天早上把记录交给你。</p>
+    <div class="monitor">
+      <div class="screen">
+        <canvas id="feed1" width="256" height="192"></canvas>
+        <div class="feed-hud">
+          <span class="tl">CAM 01 · 走廊</span>
+          <span class="tr"><i class="rec"></i>REC</span>
+          <span class="bl" id="f1-ts">1997-11-25 02:13:07</span>
+          <span class="br">移动侦测 <b id="f1-count">0</b> 次</span>
+        </div>
+      </div>
+      <div class="monitor-base"><span>CH-1</span><span class="mini-led"></span><span>夜视</span></div>
+    </div>
+    <p class="caption" id="f1-cap">演示录像，已获用户授权使用。</p>
+  </div>
+</section>
+
+<section id="stories" class="sec s-stories" data-c="0.28">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">P.05</span><h2>十二万个家庭的夜晚</h2></div>
+    <div class="story-grid">
+      <article class="story"><div class="who"><canvas class="avatar" data-av="0" width="12" height="12"></canvas><div><b>林女士</b><span>杭州</span></div></div><p class="stars">★★★★★</p><p>孩子以前怕黑，现在每天睡前都会跟守夜机说晚安。它也会回一句晚安。</p></article>
+      <article class="story"><div class="who"><canvas class="avatar" data-av="1" width="12" height="12"></canvas><div><b>陈先生</b><span>成都</span></div></div><p class="stars">★★★★★</p><p>夜视画面很清楚。只是有几个晚上，录像里多了一个人站在走廊尽头。客服说是镜头反光。</p></article>
+      <article class="story"><div class="who"><canvas class="avatar" data-av="2" width="12" height="12"></canvas><div><b>周女士</b><span>沈阳</span></div></div><p class="stars">★★★★★</p><p>它学会了我丈夫的声音。前天夜里，它用他的声音在门外叫我开门。我丈夫三年前就去世了。我没有开。</p></article>
+      <article class="story story-x"><div class="who"><canvas class="avatar" data-av="3" width="12" height="12"></canvas><div><b>&mdash;&mdash;</b><span>地址不详</span></div></div><p class="stars">★★★★★★★★</p><p>请不要关灯请不要关灯请不要关灯请不要关灯请不要关灯</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="sec s-price" data-c="0.38">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">P.06</span><h2>选择适合你家的方案</h2></div>
+    <div class="price-grid">
+      <article class="plan">
+        <h3>基础版</h3><p class="price"><span>¥</span>1,989<small>/ 一台</small></p>
+        <ul><li>一台守夜机</li><li>夜视录像保存 30 天</li><li>一年保修</li></ul>
+        <button class="btn btn-ghost" type="button" data-order="basic">订购基础版</button>
+      </article>
+      <article class="plan plan-rec">
+        <p class="badge">推荐</p>
+        <h3>家庭版</h3><p class="price"><span>¥</span>3,689<small>/ 两台</small></p>
+        <ul><li>两台守夜机，覆盖卧室和客厅</li><li>声纹记忆，最多记住 8 位家人</li><li>终身保修</li><li id="pl-rec">它会记住每一个人</li></ul>
+        <button class="btn btn-buy" type="button" data-order="family">订购家庭版</button>
+      </article>
+      <article class="plan plan-x">
+        <h3>永久版</h3><p class="price"><span>¥</span>&mdash;&mdash;<small>不收现金</small></p>
+        <ul><li>守夜机永远不会离开你家</li><li>不可退订</li><li>合约自动传给下一代</li><li>家人永远在一起</li></ul>
+        <p class="fine">代价在签署之后告知。</p>
+        <button class="btn btn-dark" type="button" data-order="sign">签署</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="sec s-faq" data-c="0.48">
+  <div class="wrap faq-wrap">
+    <div class="sec-head"><span class="sec-no">P.07</span><h2>常见问题</h2></div>
+    <div class="faq-list" id="faq-list">
+      <details><summary>守夜机需要联网吗？</summary><p>不需要。所有录像都保存在机身内部，不会上传到任何地方。</p></details>
+      <details><summary>夜里它会发出声音吗？</summary><p>一般不会。如果你在夜里听到它用家人的声音叫你的名字，不要回答。</p></details>
+      <details><summary>为什么早上它的位置和睡前不一样？</summary><p>守夜机不会移动。</p></details>
+      <details><summary>那卧室门口地板上的划痕是怎么来的？</summary><p>守夜机不会移动。</p></details>
+      <details><summary>我可以把它关掉吗？</summary><p>你为什么想把它关掉？</p></details>
+      <details><summary>怎样申请退货？</summary><p class="rep">你为什么想把它关掉？你为什么想把它关掉？你为什么想把它关掉？你为什么想把它关掉？你为什么想把它关掉？你为什么想把它关掉？</p></details>
+      <details><summary>它为什么整夜盯着卧室的门？</summary><p>它在等。</p></details>
+      <details><summary>等什么？</summary><p>等你睡着。</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="notice" class="s-notice" data-c="0.58">
+  <div class="notice-stage">
+    <div class="tv">
+      <div class="tv-glass"><canvas id="tv" width="320" height="240"></canvas></div>
+      <div class="tv-panel"><span>CH 03</span><span class="tv-led"></span><span>晚安电器</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="break" class="s-break" data-c="0.7">
+  <div class="break-stage">
+    <canvas id="burst" width="480" height="270"></canvas>
+    <p class="break-t gt" id="break-t1" data-text="信号中断">信号中断</p>
+    <p class="break-t2" id="break-t2">你不该往下看的。</p>
+  </div>
+</section>
+
+<section id="you" class="s-you" data-c="0.78">
+  <canvas id="eyes"></canvas>
+  <div class="wrap you-wrap">
+    <p class="log-h">观察记录 / OBSERVATION LOG · 对象 01</p>
+    <h2 class="huge gt" data-text="它知道你在这里">它知道你在这里</h2>
+    <div class="readouts">
+      <div class="ro"><span class="k">当前时间</span><span class="v" id="r-time">--:--:--</span><span class="n" id="r-time-c"></span></div>
+      <div class="ro"><span class="k">停留时长</span><span class="v" id="r-stay">0 分 0 秒</span><span class="n">它一直陪着你，一秒都没有离开。</span></div>
+      <div class="ro"><span class="k">往回翻看</span><span class="v" id="r-back">0 次</span><span class="n" id="r-back-c"></span></div>
+      <div class="ro"><span class="k">屏幕尺寸</span><span class="v" id="r-screen">0 × 0</span><span class="n">刚好装得下一张脸。</span></div>
+      <div class="ro"><span class="k">光标位置</span><span class="v" id="r-cursor">(0, 0)</span><span class="n" id="r-cursor-c">别动。</span></div>
+      <div class="ro"><span class="k">滚动距离</span><span class="v" id="r-scroll">0 像素</span><span class="n">每往下一像素，它就近一点。</span></div>
+      <div class="ro"><span class="k">设备</span><span class="v" id="r-plat">未知</span><span class="n">它在屏幕的另一面。</span></div>
+    </div>
+    <p class="vert" aria-label="家里现在有几个人，再数一次">家里现在有几个人<br>再数一次</p>
+  </div>
+</section>
+
+<section id="cam0" class="s-cam0" data-c="0.86">
+  <div class="wrap">
+    <p class="log-h">CAM 00 · 你所在的房间 · 直播</p>
+    <div class="cam0-frame">
+      <canvas id="feed2" width="256" height="192"></canvas>
+      <div class="feed-hud">
+        <span class="tl">CAM 00</span>
+        <span class="tr"><i class="rec"></i>LIVE</span>
+        <span class="bl" id="f2-ts">--</span>
+        <span class="br">侦测到 <b>2</b> 人</span>
+      </div>
+    </div>
+    <p class="cam0-cap gt" id="f2-cap" data-text="角落里有东西。">角落里有东西。</p>
+  </div>
+</section>
+
+<section id="end" class="s-end" data-c="0.92">
+  <div class="end-stage" id="end-stage">
+    <canvas id="face" width="200" height="150"></canvas>
+    <p class="end-line" data-a="0.02" data-b="0.15">现在，屏幕几乎全黑了。</p>
+    <p class="end-line" data-a="0.15" data-b="0.28">看看屏幕上映出的你自己。</p>
+    <p class="end-line" data-a="0.28" data-b="0.41">你的脸。你的肩膀。你身后的房间。</p>
+    <p class="end-line" data-a="0.41" data-b="0.54">你身后站着的那个，是谁？</p>
+    <p class="end-line" data-a="0.6" data-b="0.74">不要回头。</p>
+    <p class="end-line" data-a="0.74" data-b="0.86">回头，它就知道你看见它了。</p>
+    <p class="end-line end-big" data-a="0.86" data-b="0.97">晚安。</p>
+  </div>
+</section>
+
+</main>
+
+<div id="ending" hidden>
+  <div class="ending-in">
+    <p class="end-1">晚安。</p>
+    <p class="end-2">守夜机已经在你家里开始工作。</p>
+    <button class="btn btn-buy" type="button" id="restart">回到首页</button>
+  </div>
+</div>
+
+<div id="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-title" hidden>
+  <div class="win">
+    <div class="win-bar"><span id="dlg-title">晚安电器 - 订单</span><button type="button" id="dlg-x" aria-label="关闭">×</button></div>
+    <div class="win-body">
+      <svg class="win-ico" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#2d6e69"/><rect x="14.5" y="8" width="3" height="3" fill="#fff"/><rect x="14.5" y="13" width="3" height="11" fill="#fff"/></svg>
+      <p id="dlg-msg"></p>
+    </div>
+    <div class="win-foot"><button class="bevel" type="button" id="dlg-ok">好的</button></div>
+  </div>
+</div>
+
+<script src="js/gfx.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/art.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/main.js"></script>
+<script src="js/story.js"></script>
+</body>
+</html>
